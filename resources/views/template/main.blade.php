@@ -86,8 +86,8 @@
           <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img
-                src=""
-                class="user-image rounded-circle shadow"
+                src="{{ asset('assets/img/'. $data['foto']) }}"
+                class="user-image rounded-circle shadow" 
                 alt="User Image" />
 
             </a>
@@ -95,11 +95,11 @@
               <!--begin::User Image-->
               <li class="user-header text-bg-primary">
                 <img
-                  src=""
+                  src="{{ asset('assets/img/'. $data['foto']) }}"
                   class="rounded-circle shadow"
                   alt="User Image" />
                 <p>
-                  
+                    {{ $data['nama'] }}
                 </p>
               </li>
               <!--end::User Image-->
@@ -165,7 +165,7 @@
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="{{ asset(path:'js/adminlte.js') }}"></script>
+    <script src="{{ asset('js/adminlte.js') }}"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
