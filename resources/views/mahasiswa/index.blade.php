@@ -38,7 +38,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Data Mahasiswa</h3>
                         <div class="card-tools">
-                            <a href="tambahmahasiswa.php" class="btn btn-primary">Tambah</a>
+                            <a href="mahasiswa/create" class="btn btn-primary">Tambah</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -62,9 +62,17 @@
                                     <td>{{ $m->nama }}</td>
                                     <td>{{ $m->telp }}</td>
                                     <td>{{ $m->prodi->nama }}</td>
-                                    <td><a href="deletemahasiswa.php?nim={{ $m->nim }}"
-                                            onclick="return confirm('Yakin ingin hapus?')" class="btn btn-danger">Delete</a>
-                                        <a href="editmahasiswa.php?nim={{ $m->nim }}" class="btn btn-warning">Edit</a>
+                                    <td> <img src="{{ asset('storage/' . $m->foto) }}" width="100px"
+                                        height="100px"></td>
+                                    <td><a href=" {{ url("mahasiswa/$m->nim/edit") }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <form action="{{ url("mahasiswa/$m->nim") }}" method="post"
+                                        class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button class= "btn btn-danger"
+                                        onclick="return confirm ('Yakin mau di delete?')">Hapus</button>
+                                    </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -86,5 +94,4 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
-
 @endsection
