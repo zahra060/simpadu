@@ -15,7 +15,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        //                                                                                  
         $data = ['nama' => "Zahra", 'foto' => 'Avatar2.png'];
         $mahasiswa = Mahasiswa::with('prodi')->get();
         return view('mahasiswa.index', compact('data', 'mahasiswa'));
@@ -99,14 +99,12 @@ class MahasiswaController extends Controller
                 'tanggalLahir' => 'required',
                 'telp' => 'required|max:20',
                 'email' => 'required|max:100',
-                'foto' => 'image|file|max:2048'
             ],
             [
                 'nama.required' => 'Nama wajib diisi',
                 'tanggalLahir.required' => 'Tanggal Lahir harus diisi',
                 'telp.required' => 'Nomor telepon harus diisi',
                 'email.required' => 'Email harus diisi',
-                'foto' => 'File harus berupa gambar',
             ]
         );
         $mahasiswa = Mahasiswa::Find($id);

@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="card-title">Data Mahasiswa</h3>
+                            <h3 class="card-title">Data Prodi</h3>
                             <div class="card-tools">
                                 <a href="mahasiswa/create" class="btn btn-primary">Tambah</a>
                             </div>
@@ -43,30 +43,26 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>NIM</th>
-                                            <th>Nama</th>
-                                            <th>Telp</th>
-                                            <th>namaProdi</th>
+                                            <th>Nama Prodi</th>
+                                            <th>Kaprodi</th>
+                                            <th>Jurusan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    @foreach ($mahasiswa as $m) 
+                                    @foreach ($prodi as $p) 
                                         <tr>
-                                            <td>{{ $loop-> iteration }}</td>
-                                            <td>{{ $m->nim }}</td>
-                                            <td>{{ $m->nama }}</td>
-                                            <td>{{ $m->telp }}</td>
-                                            <td>{{ $m->prodi->nama }}</td>
-                                            <td> <img src="{{ asset('storage/' . $m->foto) }}" width="100px"
-                                            height="100px" /> </td>
-                                            <td><a href="{{ url("mahasiswa/$m->nim/edit") }}" 
-                                            class="btn btn-warning">Edit</a>
-                                        <form action="{{  url("mahasiswa/$m->nim") }}" method="post"
-                                            class="d-inline">
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $p->nama}}</td>
+                                            <td>{{ $p->kaprodi }}</td>
+                                            <td>{{ $p->jurusan }}</td>
+                                            <td>
+                                            <a href="{{ url("prodi/$p->id/edit") }}"
+                                                 class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ url("prodi/$p->id") }}" method="POST"
+                                             class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button class="btn btn-danger"
-                                                onclick="return confirm('Yakin mau delete?' )">Hapus</button>
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm ('Yakin mau hapus?')">Hapus</button>
                                      </form>
                                  </td> 
                                  <tr> </tr>
